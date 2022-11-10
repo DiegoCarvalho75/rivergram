@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>832798832601-ql13f5uot0nvti7mqkp4spc02k7etk78.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.832798832601-ql13f5uot0nvti7mqkp4spc02k7etk78</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDM-dqWPff9j-kpeEb0d7gZkquXq4MjeXU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>832798832601</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.rivergram</string>
+	<key>PROJECT_ID</key>
+	<string>rivergram</string>
+	<key>STORAGE_BUCKET</key>
+	<string>rivergram.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:832798832601:ios:e7cc4e6bfcd6c465604bc8</string>
+</dict>
+</plist>

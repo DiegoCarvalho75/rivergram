@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "832798832601",
+    "project_id": "rivergram",
+    "storage_bucket": "rivergram.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832798832601:android:1470d3ef0ab56f81604bc8",
+        "android_client_info": {
+          "package_name": "com.example.rivergram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832798832601-oofseski4hieq6unl0husssfitbl0720.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIZb7yvLN_tD_w8GTHWJqSTaa5g149X6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832798832601-oofseski4hieq6unl0husssfitbl0720.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
