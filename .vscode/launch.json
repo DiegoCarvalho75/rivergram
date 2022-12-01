@@ -12,6 +12,9 @@
             "args": [
                 "--web-port",
                 "5000",
+                "--web-hostname",
+                "localhost"
+                // "192.168.0.21"
             ],
             "toolArgs": [
                 "--dart-define",
@@ -19,6 +22,7 @@
                 "--dart-define",
                 "facebookClientId=906102120797554"
             ]
+            // flutter build web --dart-define googleClientId=832798832601-oofseski4hieq6unl0husssfitbl0720.apps.googleusercontent.com
         },
         {
             "name": "rivergram (profile mode)",

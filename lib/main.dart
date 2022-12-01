@@ -4,21 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:rivergram/shared/theme.dart';
-import 'package:rivergram/state/auth/constatnts/constants.dart';
-
+import './firebase_options.dart';
+import './shared/theme.dart';
 import './state/auth/backend/authenticator.dart';
-import 'firebase_options.dart';
+import './state/auth/constatnts/constants.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   if (kIsWeb) {
-    // initialiaze the facebook javascript SDK
     await FacebookAuth.i.webAndDesktopInitialize(
       appId: Constants.facebookClientId,
       cookie: true,
@@ -26,14 +22,11 @@ Future<void> main() async {
       version: "v14.0",
     );
   }
-
-  print(FacebookAuth.i.isWebSdkInitialized);
-
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({
+  const MyApp({ 
     Key? key,
   }) : super(key: key);
   @override
@@ -57,10 +50,24 @@ class Home extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(
-              'Rivergram',
-              style: Theme.of(context).textTheme.headline4,
+            Flexible(
+              child: FittedBox(
+                child: Text(
+                  'Rivergram',
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ),
+            ),
+            Flexible(
+              child: FittedBox(
+                child: Text(
+                  '${Authenticator().email ?? ' '}',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              ),
             )
           ],
         ),
@@ -76,26 +83,26 @@ class Home extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  const Text(
-                      "In veniam velit consequat ipsum laborum quis officia. Deserunt enim laboris aliqua duis incididunt voluptate ea nulla. Occaecat cupidatat ex culpa id irure dolore. Aute sit do duis duis quis sunt excepteur nisi aute id esse ."),
-                  TextFormField(
-                    decoration: const InputDecoration(label: Text("Label")),
-                    // cursofsfdsfsdfrColor: Colors.white,
-                  ),
+                  !Authenticator().isLoggedIn
+                      ? ElevatedButton(
+                          onPressed: () async {
+                            final result =
+                                await Authenticator().loginWithGoogle();
+                            print("result $result");
+                          },
+                          child: const Text("Login with Google"))
+                      : ElevatedButton(
+                          onPressed: () async {
+                            await Authenticator().logout();
+                            print("Logout");
+                          },
+                          child: const Text("Logout from Google")),
                   ElevatedButton(
                       onPressed: () async {
-                        final result = await Authenticator().loginWithGoogle();
-                        print("result $result");
+                        final login = await Authenticator().loginWithFacebook();
+                        print("${login}");
                       },
-                      child: const Text("Login with Google")),
-                  ElevatedButton(
-                      onPressed: () {},
                       child: const Text("Login with Facebook")),
-                  Text(
-                    "In veniam velit consequat ipsum laborum quis officia. Deserunt enim laboris aliqua duis incididunt voluptate ea nulla. Occaecat cupidatat ex culpa id irure dolore. Aute sit do duis duis quis sunt excepteur nisi aute id esse .",
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  const SizedBox.shrink()
                 ],
               ),
             ),

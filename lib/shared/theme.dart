@@ -57,7 +57,7 @@ final customTheme = FlexThemeData.dark(
   blendLevel: 10,
   // surfaceMode: FlexSurfaceMode.highSurfaceLowScaffold,
   useMaterial3: true,
-  scheme: FlexScheme.damask,
+  scheme: FlexScheme.material,
   appBarOpacity: 0.3,
   subThemesData: const FlexSubThemesData(
     elevatedButtonSchemeColor: SchemeColor.secondary,
