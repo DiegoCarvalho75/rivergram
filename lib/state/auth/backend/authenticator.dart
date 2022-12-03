@@ -7,6 +7,8 @@ import '../constatnts/constants.dart';
 import '../models/auth_result.dart';
 
 class Authenticator {
+  const Authenticator();
+
   UserId? get userId => FirebaseAuth.instance.currentUser?.uid;
   bool get isLoggedIn => userId != null;
   String? get displayName => FirebaseAuth.instance.currentUser?.displayName;
@@ -75,3 +77,5 @@ class Authenticator {
     }
   }
 }
+
+

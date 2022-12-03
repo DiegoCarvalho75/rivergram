@@ -10,6 +10,7 @@ import './state/auth/backend/authenticator.dart';
 import './state/auth/constatnts/constants.dart';
 
 Future<void> main() async {
+  final String teste = "teste";
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -26,7 +27,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({ 
+  const MyApp({
     Key? key,
   }) : super(key: key);
   @override
@@ -83,6 +84,7 @@ class Home extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: [
+                  Text("data"),
                   !Authenticator().isLoggedIn
                       ? ElevatedButton(
                           onPressed: () async {
