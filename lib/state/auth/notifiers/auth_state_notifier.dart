@@ -1,12 +1,12 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../auth/backend/authenticator.dart';
-import '../auth/models/auth_result.dart';
-import '../auth/models/auth_state.dart';
+import '../../user_info/backend/user_info_storage.dart';
+import '../backend/authenticator.dart';
+import '../models/auth_result.dart';
+import '../models/auth_state.dart';
 
 class AuthStateNotifier extends StateNotifier<AuthState> {
   final _authenticator = const Authenticator();
-
   AuthStateNotifier() : super(AuthState.unkown()) {
     if (_authenticator.isLoggedIn) {
       state = AuthState(

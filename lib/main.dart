@@ -5,12 +5,11 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import './firebase_options.dart';
-import './shared/theme.dart';
+import 'shared/theme/theme.dart';
 import './state/auth/backend/authenticator.dart';
 import './state/auth/constatnts/constants.dart';
 
 Future<void> main() async {
-  final String teste = "teste";
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -23,6 +22,7 @@ Future<void> main() async {
       version: "v14.0",
     );
   }
+
   runApp(const MyApp());
 }
 
