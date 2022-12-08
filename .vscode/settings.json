@@ -26,10 +26,13 @@
         "**/pubspec.lock": true,
         "**/README.md": true,
         "**/test": false,
-        "**/web": false,
+        "**/web": true,
         "**/windows": true,
         "**/.gitignore": true,
-        "**/analysis_options.yaml": true
+        "**/analysis_options.yaml": true,
+        "**/.firebase": true,
+        "**/.firebaserc": true,
+        "**/firebase.json": true
     },
     "explorerExclude.backup": {}
 }

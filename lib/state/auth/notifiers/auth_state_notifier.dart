@@ -1,12 +1,17 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:rivergram/state/posts/typedefs/user_id.dart';
 
 import '../../user_info/backend/user_info_storage.dart';
 import '../backend/authenticator.dart';
 import '../models/auth_result.dart';
 import '../models/auth_state.dart';
 
+
+
 class AuthStateNotifier extends StateNotifier<AuthState> {
   final _authenticator = const Authenticator();
+  final _userInfoStorage = const UserInfoStorage();
+
   AuthStateNotifier() : super(AuthState.unkown()) {
     if (_authenticator.isLoggedIn) {
       state = AuthState(
@@ -26,9 +31,17 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
   Future<void> loginWithGoogle() async {
     state = state.copyWithIsLoading(true);
     final result = await _authenticator.loginWithGoogle();
-    final userid = _authenticator.userId;
-    if (result == AuthResult.success && userid != null) {
-      await null;
+    final userId = _authenticator.userId;
+    if (result == AuthResult.success && userId != null) {
+      
     }
   }
+
+  Future<void> saveUserInfo({
+    required UserId userId,
+  }) async => _userInfoStorage.saveUserInfo(
+      userId: userId,
+      displayName: _authenticator.displayName,
+      email: _authenticator.email,
+    );
 }

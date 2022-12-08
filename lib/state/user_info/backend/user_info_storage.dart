@@ -11,7 +11,7 @@ class UserInfoStorage {
 
   Future<bool> saveUserInfo({
     required UserId userId,
-    required String displayName,
+    required String? displayName,
     required String? email,
   }) async {
     try {
@@ -52,4 +52,3 @@ class UserInfoStorage {
     }
   }
 }
- 
