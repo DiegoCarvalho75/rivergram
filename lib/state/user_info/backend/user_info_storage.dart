@@ -1,13 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart' show immutable;
-import 'package:rivergram/state/constants/firebase_collection_names.dart';
-import 'package:rivergram/state/constants/firebase_field_names.dart';
+
+import '../../constants/firebase_collection_names.dart';
+import '../../constants/firebase_field_names.dart';
 import '../../posts/typedefs/user_id.dart';
 import '../models/user_info_payload.dart';
 
 @immutable
 class UserInfoStorage {
   const UserInfoStorage();
+
+  final teste = "teste";
 
   Future<bool> saveUserInfo({
     required UserId userId,
@@ -25,7 +28,6 @@ class UserInfoStorage {
           )
           .limit(1)
           .get();
-
       if (userInfo.docs.isNotEmpty) {
         await userInfo.docs.first.reference.update({
           FirebaseFieldNames.displayName: displayName,

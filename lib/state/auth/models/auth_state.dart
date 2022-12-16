@@ -6,7 +6,7 @@ import 'auth_result.dart';
 @immutable
 class AuthState {
   final AuthResult? authResult;
-  final isLoading;
+  final bool isLoading;
   final UserId? userId;
 
   const AuthState({

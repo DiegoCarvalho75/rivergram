@@ -6,8 +6,6 @@ import '../backend/authenticator.dart';
 import '../models/auth_result.dart';
 import '../models/auth_state.dart';
 
-
-
 class AuthStateNotifier extends StateNotifier<AuthState> {
   final _authenticator = const Authenticator();
   final _userInfoStorage = const UserInfoStorage();
@@ -33,15 +31,35 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     final result = await _authenticator.loginWithGoogle();
     final userId = _authenticator.userId;
     if (result == AuthResult.success && userId != null) {
-      
+      await saveUserInfo(userId: userId);
     }
+    state = AuthState(
+      authResult: result,
+      isLoading: false,
+      userId: userId,
+    );
+  }
+
+  Future<void> loginWithFacebook() async {
+    state = state.copyWithIsLoading(true);
+    final result = await _authenticator.loginWithFacebook();
+    final userId = _authenticator.userId;
+    if (result == AuthResult.success && userId != null) {
+      await saveUserInfo(userId: userId);
+    }
+    state = AuthState(
+      authResult: result,
+      isLoading: false,
+      userId: userId,
+    );
   }
 
   Future<void> saveUserInfo({
     required UserId userId,
-  }) async => _userInfoStorage.saveUserInfo(
-      userId: userId,
-      displayName: _authenticator.displayName,
-      email: _authenticator.email,
-    );
+  }) =>
+      _userInfoStorage.saveUserInfo(
+        userId: userId,
+        displayName: _authenticator.displayName,
+        email: _authenticator.email,
+      );
 }
