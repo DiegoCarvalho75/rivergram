@@ -15,12 +15,16 @@ class Authenticator {
   String? get email => FirebaseAuth.instance.currentUser?.email;
 
   Future<void> logout() async {
-    await FirebaseAuth.instance.signOut();
-    await GoogleSignIn().signOut();
-    await FacebookAuth.instance.logOut();
+    try {
+      await FirebaseAuth.instance.signOut();
+      await GoogleSignIn().signOut();
+      await FacebookAuth.instance.logOut();
+    } catch (e) {
+      print(e);
+    }
   }
 
-  Future <AuthResult> loginWithFacebook() async {
+  Future<AuthResult> loginWithFacebook() async {
     final loginResult =
         await FacebookAuth.instance.login(permissions: ['email']);
     final token = loginResult.accessToken?.token;
@@ -50,7 +54,6 @@ class Authenticator {
   }
 
   Future<AuthResult> loginWithGoogle() async {
-    OAuthCredential oAuthCredential;
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn(
         scopes: [
@@ -64,7 +67,7 @@ class Authenticator {
         return AuthResult.abort;
       }
       final googleAuth = await signInAccount.authentication;
-      oAuthCredential = GoogleAuthProvider.credential(
+      final oAuthCredential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );

@@ -1,5 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:rivergram/state/posts/typedefs/user_id.dart';
+import '../../posts/typedefs/user_id.dart';
 
 import '../../user_info/backend/user_info_storage.dart';
 import '../backend/authenticator.dart';

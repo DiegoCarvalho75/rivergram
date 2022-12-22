@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rivergram/shared/theme/theme.dart';
+import 'theme.dart';
 
 class FontsList2 extends StatefulWidget {
   const FontsList2({super.key});
