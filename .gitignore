@@ -26,6 +26,7 @@ lib/firebase_options.dart
 # git rm --cached file_name
 # git rm --cached dir_name -r
 # git rm --cached .vscode/launch.json
+# git rm --cached lib/firebase_options.dart
 
 
 # Flutter/Dart/Pub related
