@@ -22,7 +22,8 @@ migrate_working_dir/
 .vscode/
 
 # Command to update ignored files
-# git rm --cached file_or_dir_name
+# git rm --cached file_name
+# git rm --cached dir_name -r
 # git rm --cached .vscode/launch.json
 
 
