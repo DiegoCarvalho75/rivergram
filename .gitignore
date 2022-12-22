@@ -21,6 +21,11 @@ migrate_working_dir/
 # is commented out by default.
 .vscode/
 
+# Command to update ignored files
+# git rm --cached file_or_dir_name
+# git rm --cached .vscode/launch.json
+
+
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
