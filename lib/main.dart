@@ -5,6 +5,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:rivergram/state/auth/providers/auth_state_provider.dart';
+import 'package:rivergram/state/providers/is_loading_provider.dart';
 import 'package:rivergram/views/components/loading/loading_screen.dart';
 
 import 'firebase_options.dart';
@@ -43,6 +44,19 @@ class MyApp extends StatelessWidget {
       theme: customTheme.copyWith(textTheme: customTextTheme),
       home: Consumer(
         builder: (context, ref, child) {
+          ref.listen<bool>(
+            isLoadingProvider,
+            (_, isLoading) {
+              print("isLoading ${isLoading}");
+              if (isLoading) {
+                LoadingScreen.instance().show(
+                  context: context,
+                );
+              } else {
+                LoadingScreen.instance().hide();
+              }
+            },
+          );
           final isLoggedIn = ref.watch(isLoggedInProvider);
           if (isLoggedIn) {
             return const MainView();
@@ -62,22 +76,26 @@ class MainView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: Icon(Icons.logout_outlined),
-            onPressed: () {
-              ref.read(authStateProvider.notifier).logout();
-            },
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              icon: Icon(Icons.logout_outlined),
+              onPressed: () {
+                ref.read(authStateProvider.notifier).logout();
+              },
+            ),
+          ],
+          title: Text(
+            '${Authenticator().email ?? ' '}',
+            style: Theme.of(context).textTheme.caption,
           ),
-        ],
-        title: Text(
-          '${Authenticator().email ?? ' '}',
-          style: Theme.of(context).textTheme.caption,
         ),
-      ),
-      body: Container(),
-    );
+        body: Container(
+          child: Text(
+            'mainView',
+            style: TextStyle(),
+          ),
+        ));
   }
 }
 

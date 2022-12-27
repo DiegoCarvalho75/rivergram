@@ -47,12 +47,14 @@ class LoadingScreen {
     final RenderBox renderBox = context.findRenderObject() as RenderBox;
     final size = renderBox.size;
 
+    // Same result as renderBox aprouch
+    // final mq = MediaQuery.of(context).size;
+
     final overlayEntry = OverlayEntry(
       builder: (context) {
         var color = Theme.of(context).colorScheme.tertiaryContainer;
         return Material(
-          color:
-              Theme.of(context).colorScheme.tertiaryContainer.withOpacity(0.8),
+          color: color.withOpacity(0.8),
           child: Center(
             child: Container(
               constraints: BoxConstraints(
