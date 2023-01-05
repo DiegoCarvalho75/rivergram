@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart' show immutable;
 
 @immutable
-class Strings {
+class ComponentsStrings {
   static const allowLikesTitle = 'Allow likes';
   static const allowLikesDescription =
       'By allowing likes, users will be able to press the like button on your post.';
@@ -29,5 +29,5 @@ class Strings {
       'Are you sure that you want to log out of the app?';
   static const cancel = 'Cancel';
 
-  const Strings._();
+  const ComponentsStrings._();
 }

@@ -4,17 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:rivergram/state/auth/providers/auth_state_provider.dart';
-import 'package:rivergram/state/providers/is_loading_provider.dart';
-import 'package:rivergram/views/components/loading/loading_screen.dart';
-
 import 'firebase_options.dart';
+import 'shared/theme/theme.dart';
 import 'state/auth/backend/authenticator.dart';
 import 'state/auth/constatnts/constants.dart';
-import 'shared/theme/theme.dart';
+import 'state/auth/providers/auth_state_provider.dart';
 import 'state/auth/providers/is_logged_in_provider.dart';
+import 'state/providers/is_loading_provider.dart';
+import 'views/components/loading/loading_screen.dart';
+import 'views/login/login_view.dart';
 
 Future<void> main() async {
+  var x = {};
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   if (kIsWeb) {
@@ -99,34 +101,34 @@ class MainView extends ConsumerWidget {
   }
 }
 
-///when you are [ NOT Logged in ]
-class LoginView extends ConsumerWidget {
-  const LoginView({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('LoginView'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ElevatedButton(
-              onPressed: () {
-                ref.read(authStateProvider.notifier).loginWithGoogle();
-              },
-              child: const Text("Login with Google")),
-          ElevatedButton(
-              onPressed: () {
-                ref.read(authStateProvider.notifier).loginWithFacebook();
-              },
-              child: const Text("Login with Facebook")),
-        ],
-      ),
-    );
-  }
-}
+// when you are [ NOT Logged in ]
+// class LoginView extends ConsumerWidget {
+//   const LoginView({
+//     Key? key,
+//   }) : super(key: key);
+// 
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('LoginView'),
+//       ),
+//       body: Column(
+//         mainAxisAlignment: MainAxisAlignment.spaceAround,
+//         crossAxisAlignment: CrossAxisAlignment.center,
+//         children: [
+//           ElevatedButton(
+//               onPressed: () {
+//                 ref.read(authStateProvider.notifier).loginWithGoogle();
+//               },
+//               child: const Text("Login with Google")),
+//           ElevatedButton(
+//               onPressed: () {
+//                 ref.read(authStateProvider.notifier).loginWithFacebook();
+//               },
+//               child: const Text("Login with Facebook")),
+//         ],
+//       ),
+//     );
+//   }
+// }

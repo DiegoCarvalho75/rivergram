@@ -14,7 +14,6 @@ dependencies:
   cloud_firestore: ^4.0.5
   uuid: ^3.0.6
   hooks_riverpod: ^2.1.1
-  font_awesome: ^5.10.1
   flutter_facebook_auth: ^5.0.6
   google_sign_in: ^5.4.2
   image_picker: ^0.8.6
@@ -30,6 +29,7 @@ dependencies:
   google_fonts: ^3.0.1
   flex_color_scheme: ^6.1.0
   flutter_dotenv: ^5.0.2
+  font_awesome_flutter: ^10.3.0
 
 dev_dependencies:
   flutter_test:
