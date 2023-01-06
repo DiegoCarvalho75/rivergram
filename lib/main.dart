@@ -15,8 +15,7 @@ import 'views/components/loading/loading_screen.dart';
 import 'views/login/login_view.dart';
 
 Future<void> main() async {
-  var x = {};
-
+  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   if (kIsWeb) {
@@ -100,35 +99,3 @@ class MainView extends ConsumerWidget {
         ));
   }
 }
-
-// when you are [ NOT Logged in ]
-// class LoginView extends ConsumerWidget {
-//   const LoginView({
-//     Key? key,
-//   }) : super(key: key);
-// 
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('LoginView'),
-//       ),
-//       body: Column(
-//         mainAxisAlignment: MainAxisAlignment.spaceAround,
-//         crossAxisAlignment: CrossAxisAlignment.center,
-//         children: [
-//           ElevatedButton(
-//               onPressed: () {
-//                 ref.read(authStateProvider.notifier).loginWithGoogle();
-//               },
-//               child: const Text("Login with Google")),
-//           ElevatedButton(
-//               onPressed: () {
-//                 ref.read(authStateProvider.notifier).loginWithFacebook();
-//               },
-//               child: const Text("Login with Facebook")),
-//         ],
-//       ),
-//     );
-//   }
-// }

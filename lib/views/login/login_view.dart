@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:rivergram/views/login/login_view_signup_links.dart';
+import 'package:rivergram/views/login/login_view_signup_links.dart'; 
 import '../../state/auth/providers/auth_state_provider.dart';
 import '../constants/app_colors.dart';
 import '../constants/views_strings.dart';
