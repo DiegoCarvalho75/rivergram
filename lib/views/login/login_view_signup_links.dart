@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:rivergram/views/components/rich_text/base_text.dart';
-import 'package:rivergram/views/components/rich_text/rich_text_widget.dart';
+import '../components/rich_text/base_text.dart';
+import '../components/rich_text/rich_text_widget.dart';
 
 import '../constants/views_strings.dart';
 
 class LoginViewSignupLinks extends StatelessWidget {
-  LoginViewSignupLinks({
+  const LoginViewSignupLinks({
     Key? key,
     this.texts,
   }) : super(key: key);
@@ -16,7 +16,7 @@ class LoginViewSignupLinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichTextWidget(
-      styleForAll: Theme.of(context).textTheme.subtitle1?.copyWith(
+      styleForAll: Theme.of(context).textTheme.titleMedium?.copyWith(
             height: 1.5,
           ),
       texts: [

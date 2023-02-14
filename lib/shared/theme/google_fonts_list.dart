@@ -47,7 +47,7 @@ class _FontsListState extends State<FontsList> {
             child: Padding(
               padding: const EdgeInsets.all(18.0),
               child: Container(
-                padding: EdgeInsets.all(24),
+                padding: const EdgeInsets.all(24),
                 color: Colors.black.withOpacity(0.5),
                 child: SingleChildScrollView(
                   child: Column(

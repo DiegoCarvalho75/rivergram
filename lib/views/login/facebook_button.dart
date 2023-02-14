@@ -18,8 +18,8 @@ class FacebookButton extends StatelessWidget {
             FontAwesomeIcons.facebook,
             color: AppColors.facebookColor,
           ),
-          SizedBox(width: 10),
-          Text(ViewsStrings.facebook),
+          const SizedBox(width: 10),
+          const Text(ViewsStrings.facebook),
         ],
       ),
     );

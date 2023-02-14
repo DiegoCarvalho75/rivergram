@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:rivergram/views/login/login_view_signup_links.dart'; 
+import 'login_view_signup_links.dart';
 import '../../state/auth/providers/auth_state_provider.dart';
 import '../constants/app_colors.dart';
 import '../constants/views_strings.dart';
@@ -15,25 +15,25 @@ class LoginView extends ConsumerWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          padding: EdgeInsets.all(16),
-          constraints: BoxConstraints(maxWidth: 500),
+          padding: const EdgeInsets.all(16),
+          constraints: const BoxConstraints(maxWidth: 500),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 Text(
                   '${ViewsStrings.welcomeToAppName}',
                   style: Theme.of(context).textTheme.displaySmall,
                 ),
-                DividerWithMargins(),
+                const DividerWithMargins(),
                 Text(
                   '${ViewsStrings.logIntoYourAccount}',
                   style: Theme.of(context)
                       .textTheme
-                      .subtitle1
+                      .titleMedium
                       ?.copyWith(height: 1.5),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextButton(
                   style: TextButton.styleFrom(
                     backgroundColor: AppColors.loginButtonColor,
@@ -41,9 +41,9 @@ class LoginView extends ConsumerWidget {
                   ),
                   onPressed:
                       ref.read(authStateProvider.notifier).loginWithGoogle,
-                  child: GoogleButton(),
+                  child: const GoogleButton(),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextButton(
                   style: TextButton.styleFrom(
                     backgroundColor: AppColors.loginButtonColor,
@@ -51,16 +51,15 @@ class LoginView extends ConsumerWidget {
                   ),
                   onPressed:
                       ref.read(authStateProvider.notifier).loginWithFacebook,
-                  child: FacebookButton(),
+                  child: const FacebookButton(),
                 ),
-                DividerWithMargins(),
-                LoginViewSignupLinks()
+                const DividerWithMargins(),
+                const LoginViewSignupLinks()
               ],
             ),
           ),
         ),
       ),
     );
-    ;
   }
 }

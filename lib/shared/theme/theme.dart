@@ -57,7 +57,7 @@ final customTheme = FlexThemeData.dark(
   blendLevel: 10,
   // surfaceMode: FlexSurfaceMode.highSurfaceLowScaffold,
   useMaterial3: true,
-  scheme: FlexScheme.material,
+  scheme: FlexScheme.blumineBlue,
   appBarOpacity: 0.3,
   subThemesData: const FlexSubThemesData(
     elevatedButtonSchemeColor: SchemeColor.secondary,
@@ -65,7 +65,7 @@ final customTheme = FlexThemeData.dark(
 );
 
 final customTextTheme = customTheme.textTheme.copyWith(
-  headline4: customTheme.textTheme.headline4?.copyWith(
+  headlineMedium: customTheme.textTheme.headlineMedium?.copyWith(
     fontFamily: headlineFontFamily,
     color: customTheme.colorScheme.primary,
   ),

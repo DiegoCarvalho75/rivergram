@@ -22,32 +22,32 @@ class TypeSystem extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(padding),
                       child: Text("headline 1",
-                          style: Theme.of(context).textTheme.headline1),
+                          style: Theme.of(context).textTheme.displayLarge),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(padding),
                       child: Text("headline 2",
-                          style: Theme.of(context).textTheme.headline2),
+                          style: Theme.of(context).textTheme.displayMedium),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(padding),
                       child: Text("headline 3",
-                          style: Theme.of(context).textTheme.headline3),
+                          style: Theme.of(context).textTheme.displaySmall),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(padding),
                       child: Text("headline 4",
-                          style: Theme.of(context).textTheme.headline4),
+                          style: Theme.of(context).textTheme.headlineMedium),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(padding),
                       child: Text("headline 5",
-                          style: Theme.of(context).textTheme.headline5),
+                          style: Theme.of(context).textTheme.headlineSmall),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(padding),
                       child: Text("headline 6",
-                          style: Theme.of(context).textTheme.headline6),
+                          style: Theme.of(context).textTheme.titleLarge),
                     ),
                   ],
                 ),
@@ -77,12 +77,12 @@ class TypeSystem extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(padding),
                     child: Text("subtitle1",
-                        style: Theme.of(context).textTheme.subtitle1),
+                        style: Theme.of(context).textTheme.titleMedium),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(padding),
                     child: Text("subtitle2",
-                        style: Theme.of(context).textTheme.subtitle2),
+                        style: Theme.of(context).textTheme.titleSmall),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(padding),
@@ -105,17 +105,17 @@ class TypeSystem extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(padding),
                     child: Text("button ",
-                        style: Theme.of(context).textTheme.button),
+                        style: Theme.of(context).textTheme.labelLarge),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(padding),
                     child: Text("caption",
-                        style: Theme.of(context).textTheme.caption),
+                        style: Theme.of(context).textTheme.bodySmall),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(padding),
                     child: Text("overline",
-                        style: Theme.of(context).textTheme.overline),
+                        style: Theme.of(context).textTheme.labelSmall),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(12),
@@ -124,7 +124,7 @@ class TypeSystem extends StatelessWidget {
                         // mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 110,
                             // constraints:
                             //     BoxConstraints(maxWidth: 110, minWidth: 110),
@@ -134,7 +134,7 @@ class TypeSystem extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 24),
-                          Container(
+                          SizedBox(
                             width: 110,
                             // constraints:
                             //     BoxConstraints(maxWidth: 110, minWidth: 110),

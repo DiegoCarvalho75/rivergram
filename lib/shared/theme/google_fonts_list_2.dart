@@ -14,11 +14,11 @@ class _FontsList2State extends State<FontsList2> {
 
   @override
   Widget build(BuildContext context) {
-    var _googleFontsList2 = {...GoogleFonts.asMap()};
+    var googleFontsList2 = {...GoogleFonts.asMap()};
     String searchTerm = 'mono';
 
     if (searchTerm.isNotEmpty) {
-      _googleFontsList2.removeWhere((key, value) =>
+      googleFontsList2.removeWhere((key, value) =>
           !key.toUpperCase().contains(searchTerm.toUpperCase()));
     }
 
@@ -28,7 +28,7 @@ class _FontsList2State extends State<FontsList2> {
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: TextFormField(
-              decoration: InputDecoration(hintText: "Search for a Google Font"),
+              decoration: const InputDecoration(hintText: "Search for a Google Font"),
               cursorColor: Colors.white70,
               cursorWidth: 2,
               style: TextStyle(fontSize: 24, fontFamily: buttonFontFamily),
@@ -36,55 +36,51 @@ class _FontsList2State extends State<FontsList2> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              child: Center(child: Text("Results ${_googleFontsList2.length}")),
-            ),
+            child: Center(child: Text("Results ${googleFontsList2.length}")),
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: _googleFontsList2.length,
+              itemCount: googleFontsList2.length,
               itemBuilder: (context, index) {
                 currentFont =
-                    _googleFontsList2.values.elementAt(index).call().fontFamily;
+                    googleFontsList2.values.elementAt(index).call().fontFamily;
 
-                return Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          padding: const EdgeInsets.all(16.0),
-                          child: FittedBox(
-                            fit: BoxFit.cover,
-                            child: Text(
-                              '${_googleFontsList2.keys.elementAt(index)}',
-                              style: TextStyle(
-                                fontFamily: currentFont,
-                                fontSize: 30,
-                              ),
-                              textAlign: TextAlign.end,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: const EdgeInsets.all(16.0),
+                        child: FittedBox(
+                          fit: BoxFit.cover,
                           child: Text(
-                            'In cupidatat duis nulla excepteur cillum dolor proident tempor eu ullamco aliquip. Mollit magna cupidatat minim ad laboris cillum qui officia elit. Ut veniam dolor adipisicing excepteur ullamco anim nostrud proident ad irure. Fugiat do officia quis ad qui ut commodo aliqua in. Deserunt eu ea et non eiusmod adipisicing ullamco adipisicing minim adipisicing deserunt ipsum dolore non.',
+                            '${googleFontsList2.keys.elementAt(index)}',
                             style: TextStyle(
                               fontFamily: currentFont,
-                              fontSize: 18,
+                              fontSize: 30,
                             ),
+                            textAlign: TextAlign.end,
                           ),
                         ),
                       ),
-                      Divider(),
-                    ],
-                  ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          'In cupidatat duis nulla excepteur cillum dolor proident tempor eu ullamco aliquip. Mollit magna cupidatat minim ad laboris cillum qui officia elit. Ut veniam dolor adipisicing excepteur ullamco anim nostrud proident ad irure. Fugiat do officia quis ad qui ut commodo aliqua in. Deserunt eu ea et non eiusmod adipisicing ullamco adipisicing minim adipisicing deserunt ipsum dolore non.',
+                          style: TextStyle(
+                            fontFamily: currentFont,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Divider(),
+                  ],
                 );
               },
             ),

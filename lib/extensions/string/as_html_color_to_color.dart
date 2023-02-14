@@ -5,7 +5,7 @@ extension AsHtmlColorToColor on String {
   Color asHtmlColorToColor() {
     return Color(
       int.parse(
-        this.removeAll(['0x', '#']).padLeft(
+        removeAll(['0x', '#']).padLeft(
           8,
           'ff',
         ),

@@ -8,7 +8,7 @@ class BaseText {
   final String text;
   final TextStyle? textStyle;
 
-  BaseText({
+  const BaseText({
     required this.text,
     this.textStyle,
   });

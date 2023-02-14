@@ -6,16 +6,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'firebase_options.dart';
 import 'shared/theme/theme.dart';
-import 'state/auth/backend/authenticator.dart';
 import 'state/auth/constatnts/constants.dart';
-import 'state/auth/providers/auth_state_provider.dart';
 import 'state/auth/providers/is_logged_in_provider.dart';
 import 'state/providers/is_loading_provider.dart';
 import 'views/components/loading/loading_screen.dart';
 import 'views/login/login_view.dart';
+import 'views/main/main_view.dart';
 
 Future<void> main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   if (kIsWeb) {
@@ -48,7 +46,6 @@ class MyApp extends StatelessWidget {
           ref.listen<bool>(
             isLoadingProvider,
             (_, isLoading) {
-              print("isLoading ${isLoading}");
               if (isLoading) {
                 LoadingScreen.instance().show(
                   context: context,
@@ -67,35 +64,5 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
-  }
-}
-
-/// when you are [logged In]
-class MainView extends ConsumerWidget {
-  const MainView({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(
-              icon: Icon(Icons.logout_outlined),
-              onPressed: () {
-                ref.read(authStateProvider.notifier).logout();
-              },
-            ),
-          ],
-          title: Text(
-            '${Authenticator().email ?? ' '}',
-            style: Theme.of(context).textTheme.caption,
-          ),
-        ),
-        body: Container(
-          child: Text(
-            'mainView',
-            style: TextStyle(),
-          ),
-        ));
   }
 }

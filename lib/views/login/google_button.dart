@@ -18,8 +18,8 @@ class GoogleButton extends StatelessWidget {
             FontAwesomeIcons.google,
             color: AppColors.googleColor,
           ),
-          SizedBox(width: 10),
-          Text(ViewsStrings.google),
+          const SizedBox(width: 10),
+          const Text(ViewsStrings.google),
         ],
       ),
     );

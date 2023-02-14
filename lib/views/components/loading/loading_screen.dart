@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../constants/componentsStrings.dart';
+import '../constants/components_strings.dart';
 import 'loading_screen_controller.dart';
 
 class LoadingScreen {
@@ -37,10 +37,10 @@ class LoadingScreen {
     required BuildContext context,
     required String text,
   }) {
-    final overlayState = Overlay.of(context);
-    if (overlayState == null) {
-      return null;
-    }
+    final OverlayState overlayState = Overlay.of(context);
+    // if (overlayState == null) {
+    //   return null;
+    // }
     final streamTextController = StreamController<String>();
     streamTextController.add(text);
 
@@ -62,6 +62,10 @@ class LoadingScreen {
                 minWidth: size.width * 0.5,
                 maxHeight: size.height * 0.8,
               ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Theme.of(context).colorScheme.surface,
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SingleChildScrollView(
@@ -69,16 +73,16 @@ class LoadingScreen {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(height: 8),
-                      CircularProgressIndicator(),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
+                      const CircularProgressIndicator(),
+                      const SizedBox(height: 8),
                       StreamBuilder<String>(
                         stream: streamTextController.stream,
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             return Text(
                               snapshot.requireData,
-                              style: TextStyle(),
+                              style: const TextStyle(),
                             );
                           } else {
                             return Container();
@@ -88,10 +92,6 @@ class LoadingScreen {
                     ],
                   ),
                 ),
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Theme.of(context).colorScheme.surface,
               ),
             ),
           ),
