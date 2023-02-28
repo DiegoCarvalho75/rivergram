@@ -10,8 +10,6 @@ import '../models/user_info_payload.dart';
 class UserInfoStorage {
   const UserInfoStorage();
 
-  final teste = "teste";
-
   Future<bool> saveUserInfo({
     required UserId userId,
     required String? displayName,
