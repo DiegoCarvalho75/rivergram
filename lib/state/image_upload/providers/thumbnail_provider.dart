@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rivergram/state/image_upload/exception/could_not_build_thumbnail_exception.dart';
 import 'package:rivergram/state/image_upload/extensions/get_image_aspect_ratio.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
-import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../models/file_type.dart';
 import '../models/image_with_aspect_ratio.dart';
@@ -16,7 +16,7 @@ final thumbnailProvider = FutureProvider.family
     case FileType.image:
       image = Image.network(
         request.file.path,
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.cover,
       );
       // image = Image.file(
       //   request.file,
@@ -40,5 +40,6 @@ final thumbnailProvider = FutureProvider.family
       break;
   }
   final aspectRatio = await image.getImageAspectRatio();
+  print(aspectRatio.toString());
   return ImageWithAspectRatio(image: image, aspectRatio: aspectRatio);
 });

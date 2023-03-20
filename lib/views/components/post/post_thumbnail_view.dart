@@ -14,11 +14,14 @@ class PostThumbnailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Image.network(
-        post.thumbnailUrl,
-        fit: BoxFit.cover,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Image.network(
+          '${post.thumbnailUrl}',
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

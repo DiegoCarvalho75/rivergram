@@ -1,10 +1,11 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import '../models/post_settings.dart';
 
 class PostSettingsNotifier extends StateNotifier<Map<PostSetting, bool>> {
   PostSettingsNotifier()
       : super({
-          for (final setting in PostSetting.values) setting: true,
+          for (final setting in PostSetting.values) setting: false,
         });
 
   void setSetting(
@@ -15,6 +16,6 @@ class PostSettingsNotifier extends StateNotifier<Map<PostSetting, bool>> {
     if (existingValue == null || existingValue == value) {
       return;
     }
-    state = state..[setting] = value;
+    state = {...state}..[setting] = value;
   }
 }

@@ -1,12 +1,11 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'file_type.dart';
 
 @immutable
 class ThumbnailRequest {
-  final File file;
+  final XFile file;
   final FileType fileType;
   const ThumbnailRequest({
     required this.file,

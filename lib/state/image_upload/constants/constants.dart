@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart' show immutable;
 class ThumbConstants {
   static const imageThumbnailWidth = 150;
 
-  static const videoThumbnailQuality = 400;
-  static const videoThumbnailMaxHeight = 75;
+  static const videoThumbnailQuality = 75;
+  static const videoThumbnailMaxHeight = 400;
 
   const ThumbConstants._();
 }

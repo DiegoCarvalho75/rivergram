@@ -1,20 +1,16 @@
-import 'dart:io';
-
-import 'package:rivergram/state/post_settings/models/post_settings.dart';
-
-import '../components/file_thumbnail_view.dart';
-import '/state/image_upload/providers/image_uploader_provider.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
-import 'package:rivergram/state/image_upload/models/file_type.dart';
-import 'package:rivergram/state/image_upload/models/thumbnail_request.dart';
-import 'package:rivergram/state/post_settings/providers/post_settings_provider.dart';
-import 'package:rivergram/views/constants/views_strings.dart';
-
+import '/state/image_upload/providers/image_uploader_provider.dart';
 import '../../state/auth/providers/user_id_provider.dart';
+import '../../state/image_upload/models/file_type.dart';
+import '../../state/image_upload/models/thumbnail_request.dart';
+import '../../state/post_settings/models/post_settings.dart';
+import '../../state/post_settings/providers/post_settings_provider.dart';
+import '../components/file_thumbnail_view.dart';
+import '../constants/views_strings.dart';
 
 class CreateNewPostView extends StatefulHookConsumerWidget {
   const CreateNewPostView({
@@ -23,7 +19,9 @@ class CreateNewPostView extends StatefulHookConsumerWidget {
     required this.fileType,
   });
 
-  final File fileToPost;
+  static const path = 'wweewew';
+
+  final XFile fileToPost;
   final FileType fileType;
 
   @override
@@ -39,6 +37,7 @@ class _CreateNewPostViewState extends ConsumerState<CreateNewPostView> {
       fileType: widget.fileType,
     );
     final postSettings = ref.watch(postSettingsProvider);
+    print(widget.fileToPost);
     final postController = useTextEditingController();
     final isPostButtonEnabled = useState(false);
     useEffect(() {

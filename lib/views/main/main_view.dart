@@ -4,9 +4,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rivergram/state/post_settings/providers/post_settings_provider.dart';
 import 'package:rivergram/views/create_new_post/create_new_post_view.dart';
 
-import '../../state/image_upload/models/file_type.dart';
 import '/state/image_upload/helpers/image_picker_helper.dart';
 import '../../state/auth/providers/auth_state_provider.dart';
+import '../../state/image_upload/models/file_type.dart';
 import '../components/dialogs/alert_dialog_model.dart';
 import '../components/dialogs/logout_dialog.dart';
 import '../constants/views_strings.dart';
@@ -38,6 +38,13 @@ class _MainViewState extends ConsumerState<MainView> {
                 if (!mounted) {
                   return;
                 }
+                print(videoFile.path);
+
+                // Uint8List bytes = await VideoThumbnail.getBytes(
+                //     "https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4");
+
+                return;
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -99,6 +106,7 @@ class _MainViewState extends ConsumerState<MainView> {
           ),
         ),
         body: const TabBarView(children: [
+          // MyWidget(),
           UserPostView(),
           UserPostView(),
           UserPostView(),

@@ -1,10 +1,11 @@
-import 'dart:io';
+// import 'package:image_picker';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image/image.dart' as image_package;
+import 'package:image_picker/image_picker.dart';
 import 'package:rivergram/state/posts/models/post_payload.dart';
 import 'package:uuid/uuid.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
@@ -25,7 +26,7 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
   set isLoading(bool value) => state = value;
 
   Future<bool> upload({
-    required File file,
+    required XFile file,
     required FileType fileType,
     required String message,
     required Map<PostSetting, bool> postSettings,
@@ -36,7 +37,7 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
 
     switch (fileType) {
       case FileType.image:
-        final fileAsImage = image_package.decodeImage(file.readAsBytesSync());
+        final fileAsImage = image_package.decodeImage(await file.readAsBytes());
         if (fileAsImage == null) {
           isLoading = false;
           throw CouldNotBuildThumbnailException();
@@ -61,7 +62,7 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
     }
     final thumbAspectRatio = await thumbnailUint8List.getImageDataAspectRatio();
 
-    final fileName = const Uuid().v4();
+    final fileName = '${const Uuid().v4()}';
 
     final thumbnailRef = FirebaseStorage.instance
         .ref()
@@ -81,8 +82,8 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
       );
       final thumbnailStorageId = thumbnailUploadTask.ref.name;
 
-      final originalFileUploadTask = await originalFileRef.putFile(
-        file,
+      final originalFileUploadTask = await originalFileRef.putData(
+        await file.readAsBytes(),
       );
       final originalFileStorageId = originalFileUploadTask.ref.name;
 
@@ -103,6 +104,7 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
           .add(postPayload);
       return true;
     } catch (e) {
+      print(e);
       return false;
     } finally {
       isLoading = false;
